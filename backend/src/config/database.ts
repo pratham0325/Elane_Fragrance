@@ -8,7 +8,7 @@ const RETRY_DELAY_MS = 3000;
 export async function connectDatabase(attempt = 1): Promise<void> {
   try {
     mongoose.set('strictQuery', true);
-    await mongoose.connect(env.MONGO_URI);
+    await mongoose.connect(env.MONGODB_URI);
     logger.info(`MongoDB connected → ${mongoose.connection.host}/${mongoose.connection.name}`);
   } catch (err) {
     logger.error({ err }, `MongoDB connection failed (attempt ${attempt}/${MAX_RETRIES})`);

@@ -569,7 +569,7 @@ const REVIEWS = [
 
 async function main() {
   console.log('🌸 ÉLANÉ seed script starting...');
-  await mongoose.connect(env.MONGO_URI);
+  await mongoose.connect(env.MONGODB_URI);
   console.log('  ✓ MongoDB connected');
 
   // Clear existing

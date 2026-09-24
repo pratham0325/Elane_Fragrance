@@ -7,7 +7,11 @@ import { staggerContainer, fadeUp, staggerFast } from '../animations/variants';
 
 export default function Collections() {
   const [categories, setCategories] = useState<any[]>([]);
-  useEffect(() => { apiClient.get('/categories').then(r => setCategories(r.data.data)).catch(() => {}); }, []);
+  useEffect(() => {
+    apiClient.get('/categories')
+      .then(r => setCategories(r.data.data))
+      .catch((error) => console.error('Failed to load categories', error));
+  }, []);
 
   return (
     <div className="min-h-screen bg-ivory pt-28">

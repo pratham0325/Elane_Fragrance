@@ -6,7 +6,7 @@ dotenv.config();
 const envSchema = z.object({
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
   PORT: z.coerce.number().default(5000),
-  MONGO_URI: z.string().min(1, 'MONGO_URI is required'),
+  MONGODB_URI: z.string().min(1, 'MONGODB_URI is required').default(process.env.MONGO_URI ?? ''),
   JWT_ACCESS_SECRET: z.string().min(10, 'JWT_ACCESS_SECRET must be set and reasonably long'),
   JWT_REFRESH_SECRET: z.string().min(10, 'JWT_REFRESH_SECRET must be set and reasonably long'),
   JWT_ACCESS_EXPIRES_IN: z.string().default('15m'),
